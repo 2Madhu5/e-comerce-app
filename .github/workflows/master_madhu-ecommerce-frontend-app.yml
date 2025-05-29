@@ -30,5 +30,5 @@ jobs:
         with:
           app-name: 'madhu-ecommerce-frontend-app' # ✅ your frontend app name
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FRONTEND }} # ✅ secret in GitHub
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A4CE4F998944CAD874E279A7DCEBF9F6 }}
           package: frontend/build # ✅ build output path
