@@ -1,4 +1,4 @@
-name: Deploy React Frontend to Azure App Service
+name: Build and Deploy React Frontend to Azure Web App - madhu-ecommerce-frontend-app
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
       - name: Set up Node.js
@@ -19,20 +19,16 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: Install dependencies
+      - name: Install Dependencies and Build
         run: |
           cd frontend
           npm install
-
-      - name: Build React app
-        run: |
-          cd frontend
           npm run build
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: madhu-ecommerce-frontend-app   # your Azure frontend app name
-          slot-name: Production
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FRONTEND }}
-          package: frontend/build
+          app-name: 'madhu-ecommerce-frontend-app' # ✅ your frontend app name
+          slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FRONTEND }} # ✅ secret in GitHub
+          package: frontend/build # ✅ build output path
