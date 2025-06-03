@@ -20,15 +20,15 @@ jobs:
           node-version: '20.x'
 
       - name: Install Dependencies and Build
+        working-directory: frontend
         run: |
-          cd frontend
           npm install
           npm run build
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'madhu-ecommerce-frontend-app'
+          app-name: 'madhu-ecommerce-frontend-app'  # Your Frontend App Service name
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A4CE4F99894A4CAD874E279A7DECBF96 }}
-          package: frontend/build
+          package: ./frontend/build
