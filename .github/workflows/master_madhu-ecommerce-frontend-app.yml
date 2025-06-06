@@ -28,7 +28,7 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'madhu-ecommerce-frontend-app'  # Your Frontend App Service name
+          app-name: 'madhu-ecommerce-frontend-app'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A4CE4F99894A4CAD874E279A7DECBF96 }}
           package: ./frontend/build
